@@ -130,7 +130,7 @@ section { padding: 100px 0; }
   box-shadow: 0 10px 20px rgba(217, 194, 167, 0.4);
 }
 
-/* ==================== ABOUT SECTION – ROUNDED CIRCULAR IMAGE ==================== */
+/* ==================== ABOUT SECTION – MINIMAL CIRCULAR IMAGE (BLENDS WITH PAGE) ==================== */
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -150,21 +150,18 @@ section { padding: 100px 0; }
   height: 420px;
   border-radius: 50%;
   overflow: hidden;
-  border: 8px solid #D9C2A7;
   box-shadow: 
-    0 30px 80px rgba(0, 0, 0, 0.6),
-    0 0 0 12px rgba(217, 194, 167, 0.15),
-    0 0 60px rgba(217, 194, 167, 0.2);
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(217, 194, 167, 0.1);
   transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  background: transparent;
 }
 
 .about-img-wrapper-rounded:hover {
-  transform: translateY(-12px) scale(1.03);
+  transform: translateY(-10px) scale(1.02);
   box-shadow: 
-    0 50px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 16px rgba(217, 194, 167, 0.3),
-    0 0 80px rgba(217, 194, 167, 0.4);
-  border-color: #30360E;
+    0 35px 90px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(217, 194, 167, 0.18);
 }
 
 .about-profile-img-rounded {
@@ -172,21 +169,22 @@ section { padding: 100px 0; }
   height: 100%;
   object-fit: cover;
   transition: transform 1.2s ease;
+  display: block;
 }
 
 .about-img-wrapper-rounded:hover .about-profile-img-rounded {
-  transform: scale(1.12);
+  transform: scale(1.08);
 }
 
-/* Subtle Glow Overlay on Hover */
+/* Ultra-subtle glow overlay */
 .img-glow-rounded {
   position: absolute;
   inset: 0;
   background: radial-gradient(
     circle at center,
-    rgba(217, 194, 167, 0.08) 0%,
-    rgba(217, 194, 167, 0.15) 50%,
-    transparent 80%
+    rgba(217, 194, 167, 0.06) 0%,
+    rgba(217, 194, 167, 0.08) 40%,
+    transparent 70%
   );
   border-radius: 50%;
   pointer-events: none;
@@ -587,6 +585,95 @@ footer {
   50% { transform: translateY(-12px); }
 }
 
+/* Lightbox Modal */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.4s ease;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+  animation: scaleIn 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.lightbox-image {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  padding: 40px 30px 30px;
+  color: #fff;
+  text-align: center;
+}
+
+.lightbox-caption h3 {
+  font-size: 1.8rem;
+  color: #D9C2A7;
+  margin-bottom: 8px;
+}
+
+.lightbox-caption p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+  background: #D9C2A7;
+  color: #000;
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 /* Responsive */
 @media (max-width: 992px) {
   .about-content {
@@ -599,7 +686,6 @@ footer {
     width: 360px; 
     height: 360px; 
     margin: 0 auto;
-    border-width: 7px;
   }
 
   .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
@@ -623,7 +709,6 @@ footer {
   .about-img-wrapper-rounded {
     width: 300px;
     height: 300px;
-    border-width: 6px;
   }
 
   .floating-whatsapp {
