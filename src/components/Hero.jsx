@@ -3,7 +3,7 @@ import "../App.css"
 
 
 const Hero = () => {
-  const roles = ["Graphic Designer", "Brand Creator", "Visual Storyteller", "UI/UX Enthusiast"];
+  const roles = ["Graphic Designer", "Brand Creator", "Visual Storyteller",];
   const [text, setText] = useState('');
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);

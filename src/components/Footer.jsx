@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="container footer-container">
         <div className="footer-content">
           <p className="footer-text">
-            © 2025 Your Name. Crafted with precision in Nigeria
+            © 2025 D-G. Crafted with precision in Nigeria
           </p>
           <div className="social-links">
             <a href="https://github.com/yourusername" target="_blank" rel="noreferrer" aria-label="GitHub">

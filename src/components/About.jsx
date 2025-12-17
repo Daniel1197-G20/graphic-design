@@ -5,7 +5,8 @@ import profilep from '../assets/profilep.jpeg';
 
 const About = () => {
   const lines = [
-    "I’m a graphic designer who loves turning ideas into clean, creative visuals. From logos to flyers and social media designs, I help brands stand out with designs that speak. Let’s create something awesome together..",
+    "I’m a graphic designer who loves turning ideas into clean, creative visuals. From logos to flyers and social media designs, I help brands stand out with designs that speak.",
+    "Let’s create something awesome together. I’m a designer with a background in editorial and brand systems. I love working on projects that require concept-led visual storytelling and turning complex ideas into beautiful, functional experiences."
   ];
 
   return (
@@ -22,10 +23,9 @@ const About = () => {
         </motion.h2>
 
         <div className="about-content">
-        
           <div className="about-text ai-typing">
             {lines.map((line, i) => (
-              <SweetTyping key={i} text={line} delay={i * 1.6} />
+              <SweetTyping key={i} text={line} delay={i * 1.8} />
             ))}
 
             <motion.a
@@ -34,7 +34,7 @@ const About = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: lines.length * 1.6 + 0.6 }}
+              transition={{ delay: lines.length * 1.8 + 0.6 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -42,20 +42,26 @@ const About = () => {
             </motion.a>
           </div>
 
-        
+          {/* Enhanced Image Container */}
           <motion.div
-            className="about-img"
-            initial={{ opacity: 0, x: 60, scale: 0.92 }}
+            className="about-img-container"
+            initial={{ opacity: 0, x: 60, scale: 0.9 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 1.4, delay: 0.4, ease: "easeOut" }}
+            transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
             whileHover={{ scale: 1.04 }}
           >
-            <img
-              src={profilep}
-              alt="Shot by Jemmy"
-              className="rounded-2xl shadow-2xl w-full"
-            />
+            <div className="about-img-wrapper">
+              <img
+                src={profilep}
+                alt="Portrait"
+                className="about-profile-img"
+              />
+              {/* Decorative Overlay Elements */}
+              <div className="img-accent-top"></div>
+              <div className="img-accent-bottom"></div>
+              <div className="img-glow"></div>
+            </div>
           </motion.div>
         </div>
       </div>
@@ -72,7 +78,7 @@ const SweetTyping = ({ text, delay = 0 }) => {
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
       transition={{ delay, duration: 0.4 }}
-      className="leading-relaxed"
+      className="leading-relaxed text-lg"
     >
       {words.map((word, i) => (
         <motion.span
@@ -81,7 +87,7 @@ const SweetTyping = ({ text, delay = 0 }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{
-            delay: delay + i * 0.09,       
+            delay: delay + i * 0.08,
             duration: 0.5,
             ease: "easeOut",
           }}
